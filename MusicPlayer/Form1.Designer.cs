@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.addUrlBtn = new System.Windows.Forms.Button();
@@ -38,7 +39,10 @@
             this.openBtn = new System.Windows.Forms.Button();
             this.upBtn = new System.Windows.Forms.Button();
             this.nextBtn = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Player
@@ -92,12 +96,14 @@
             // 
             // listMusics
             // 
+            this.listMusics.ContextMenuStrip = this.contextMenuStrip1;
             this.listMusics.FormattingEnabled = true;
             this.listMusics.ItemHeight = 12;
             this.listMusics.Location = new System.Drawing.Point(471, 12);
             this.listMusics.Name = "listMusics";
             this.listMusics.Size = new System.Drawing.Size(176, 352);
             this.listMusics.TabIndex = 5;
+            this.listMusics.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listMusics_MouseDoubleClick);
             // 
             // openBtn
             // 
@@ -129,6 +135,20 @@
             this.nextBtn.UseVisualStyleBackColor = true;
             this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "删除";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -147,6 +167,7 @@
             this.Text = "万能播放器";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -162,6 +183,8 @@
         private System.Windows.Forms.Button openBtn;
         private System.Windows.Forms.Button upBtn;
         private System.Windows.Forms.Button nextBtn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
 

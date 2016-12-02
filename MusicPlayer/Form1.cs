@@ -116,11 +116,23 @@ namespace MusicPlayer
         private void upBtn_Click(object sender, EventArgs e)
         {
 
+            int index = listMusics.SelectedIndex;
+            index--;
+            if (index < 0)
+            {
+                myPlay(musics.Count - 1);
+            }
+            else
+            {
+                myPlay(index);
+            }
+
+           // myPlay(listMusics.SelectedIndex - 1 < 0 ? musics.Count - 1 : --listMusics.SelectedIndex);
         }
 
         private void nextBtn_Click(object sender, EventArgs e)
         {
-            int index = listMusics.SelectedIndex + 1;
+            int index = listMusics.SelectedIndex;
             index++;
             if (index > musics.Count - 1)
             {
@@ -130,7 +142,33 @@ namespace MusicPlayer
             {
                 myPlay(index);
             }
-           
+
+
+           // myPlay(listMusics.SelectedIndex + 1 > musics.Count - 1 ? 0 : ++listMusics.SelectedIndex);
+        }
+
+        /// <summary>
+        /// 双击播放
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listMusics_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            myPlay(listMusics.SelectedIndex);
+        }
+
+        /// <summary>
+        /// 右键删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listMusics.SelectedIndex != -1)
+            {
+                musics.RemoveAt(listMusics.SelectedIndex);
+                listMusics.Items.RemoveAt(listMusics.SelectedIndex);
+            }
         }
     }
 }
